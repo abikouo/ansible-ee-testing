@@ -1,0 +1,34 @@
+---
+version: 3
+
+build_arg_defaults:
+  ANSIBLE_GALAXY_CLI_COLLECTION_OPTS: '--pre'
+
+dependencies:
+  ansible_core:
+    package_pip: ansible-core
+  ansible_runner:
+    package_pip: ansible-runner
+  galaxy:
+    collections:
+      - name: amazon.aws
+        version: 7.4.0
+  python:
+    - botocore>=1.25.0
+    - boto3>=1.22.0
+
+images:
+  base_image:
+    name: registry-proxy.engineering.redhat.com/rh-osbs/ansible-automation-platform-25-ee-supported-rhel9:latest
+
+options:
+  package_manager_path: /usr/bin/microdnf
+
+additional_build_steps:
+  prepend_final: |
+    RUN whoami
+    RUN cat /etc/os-release
+  append_final:
+    - RUN echo This is a post-install command!
+    - RUN ls -la /etc
+
