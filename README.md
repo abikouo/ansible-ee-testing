@@ -81,7 +81,7 @@ For example, for ``amazon.aws`` collection, run the following:
 cd <path to collection> && git checkout x.x.x
 ```
 
-Then run the following:
+The [run.py](https://github.com/abikouo/ansible-ee-testing/blob/main/run.py) is used to run the integration tests targets as follow:
 
 ```shell
 # the tool is forcing ansible-navigator to use docker as container runtime, this can be easily updated
