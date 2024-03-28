@@ -10,10 +10,15 @@ dependencies:
         version: 7.1.0
       - name: cloud.terraform
         version: 2.0.0
+      - name: kubernetes.core
+        version: 3.0.1
       - name: community.general
   python:
     - botocore>=1.29.0
     - boto3>=1.26.0
+    - kubernetes>=24.2.0
+    - requests-oauthlib
+    - jsonpatch
   system:
     - terraform
     - unzip
@@ -49,3 +54,6 @@ additional_build_steps:
 
     # Display terraform version
     RUN terraform version
+
+    # Display kubectl version
+    RUN kubectl version --client=true
